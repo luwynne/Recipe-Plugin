@@ -1,13 +1,16 @@
 jQuery(function($){
+    //this function is called when the user rates the recipe
     $("#recipe_rating").bind( "rated", function(){
         $(this).rateit( "readonly", true );
-
-        var form                    =   {
+        //thie disables the user from keep on rating after he already sleected the rate value
+        var form                    =   { //this object is called when making an ajax requests
             action:                     "r_rate_recipe",
             rid:                        $(this).data('rid'),
             rating:                     $(this).rateit( 'value' )
         };
 
+        //sending an ajax request so that the info can be saved
+        //start by sendong the ajax through the url
         $.post( recipe_obj.ajax_url, form, function(data){
 
         });

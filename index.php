@@ -26,6 +26,8 @@ include ('includes/init.php');
 include('includes/admin/init.php');
 include('process/save-post.php');
 include('process/filter-content.php');
+include('includes/front/enqueue.php');
+include('process/rate-recipe.php');
 
 
 
@@ -49,6 +51,16 @@ add_action( 'save_post_recipe', 'r_save_post_admin', 10, 3 );
 
 //displaying content inside the new post type url
 add_filter('the_content','r_filter_recipe_content');
+
+//including rating.js plugin for rating part of the website
+//loading the asset as last
+add_action('wp_enqueue_scripts','r_enqueue_scripts',100);
+
+//calling ajax
+add_action('wp_ajax_r_rate_recipe','r_rate_recipe');
+
+//this will also proccess ajax requests from users that are not logged in
+add_action('wp_ajax_nopriv_r_rate_recipe','r_rate_recipe');
 
 //SHORTCODES
 
