@@ -28,6 +28,8 @@ include('process/save-post.php');
 include('process/filter-content.php');
 include('includes/front/enqueue.php');
 include('process/rate-recipe.php');
+include(dirname(RECIPE_PLUGIN_URL).'/includes/widgets.php');
+include ('includes/widgets/daily-recipe.php');
 
 
 
@@ -61,6 +63,10 @@ add_action('wp_ajax_r_rate_recipe','r_rate_recipe');
 
 //this will also proccess ajax requests from users that are not logged in
 add_action('wp_ajax_nopriv_r_rate_recipe','r_rate_recipe');
+
+//getting started with the widget recipe of the dat
+//using wp widhet api using the function inside the widget.php
+add_action('widgets_init','r_widget_init');
 
 //SHORTCODES
 
