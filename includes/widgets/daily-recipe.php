@@ -81,7 +81,42 @@ class R_Daily_Recipe_widget extends WP_Widget {
      */
     public function widget( $args, $instance ) {
 
-        echo 'Recipe of the day';
+        //converting values from arrays to single variables
+        extract($args);
+        extract($instance);
+
+        $title = apply_filters('widget_title',$title);
+
+        echo $before_widget;
+        echo $before_title . $title . $after_title;
+
+        $recipe_id = get_transient('r_daily_recipe');
+        ?>
+
+        <div id="oc-portfolio-sidebar" class="owl-carousel carousel-widget"
+             data-items="1" data-margin="10" data-loop="true"
+             data-nav="false" data-autoplay="5000">
+            <div class="oc-item">
+                <div class="iportfolio">
+                    <div class="portfolio-image">
+                        <a href="<?php echo get_the_permalink( $recipe_id ) ; ?>">
+                            <?php echo get_the_post_thumbnail( $recipe_id ); ?>
+                        </a>
+                    </div>
+                    <div class="portfolio-desc center nobottompadding">
+                        <h3>
+                            <a href="<?php echo get_the_permalink( $recipe_id ) ; ?>">
+                                <?php echo get_the_title( $recipe_id ); ?>
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php
+
+        echo $after_widget;
 
     }
 

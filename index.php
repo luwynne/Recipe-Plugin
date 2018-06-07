@@ -30,6 +30,8 @@ include('includes/front/enqueue.php');
 include('process/rate-recipe.php');
 include(dirname(RECIPE_PLUGIN_URL).'/includes/widgets.php');
 include ('includes/widgets/daily-recipe.php');
+include('includes/cron.php');
+include('includes/shortcodes/creator.php');
 
 
 
@@ -38,6 +40,9 @@ include ('includes/widgets/daily-recipe.php');
 //this is an special sort of hook made only for plugins
 //this will take the file it resids and the function to be executed
 register_activation_hook(__FILE__,'r_activate_plugin');
+
+//deactivating the plugin
+register_deactivation_hook(__FILE__,'r_deactivate_plugin');
 
 //creating a custom post type
 //this data is triggerer when wp requires the data required for the current page
@@ -68,7 +73,15 @@ add_action('wp_ajax_nopriv_r_rate_recipe','r_rate_recipe');
 //using wp widhet api using the function inside the widget.php
 add_action('widgets_init','r_widget_init');
 
+//custom hook for cron jobs daily new recipe
+//wp will take care of checking the time and call the r_generate_daily_recipe
+//param name of the hook, name of the function
+add_action('r_daily_recipe_hook','r_generate_daily_recipe');
+
 //SHORTCODES
+//shortcode for
+//received the name of the shortcode and the function to call when its used
+add_shortcode( 'recipe_creator', 'r_recipe_creator_shortcode' );
 
 
 
