@@ -48,6 +48,16 @@ function r_rate_recipe(){
     //receiving information of average
     update_post_meta($post_id,'recipe_data',$recipe_data);
 
+    //extending the functionality of the rating
+    //this will make that anyone can hook into this function and use it
+    //this takes the name of the action we want to trigger
+    //the second parameters are optional
+    do_action('recipe_rated',array(
+        'post_id'=>$post_id,
+        'rating'=>$rating,
+        'user_ip'=>$user_IP
+    ));
+
     $output['status'] = 2;
 
     //sending ajax response of the insertion

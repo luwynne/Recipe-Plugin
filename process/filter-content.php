@@ -3,7 +3,7 @@
 function r_filter_recipe_content($content){
 
     //checking if this is a single post
-    if(!is_singular('recipe')){
+    if( !is_singular( 'recipe' ) ){
         return $content;
     }
 
@@ -33,6 +33,9 @@ function r_filter_recipe_content($content){
     $user_IP                    =   $_SERVER['REMOTE_ADDR'];
 
 
+
+    //the prepare method accepts the query and the data to sanitize
+    //in this case, we sanitize the post->ID, and the user_IP
 
     $rating_count               =   $wpdb->get_var($wpdb->prepare(
         "SELECT COUNT(*) FROM `" . $wpdb->prefix . "recipe_ratings`

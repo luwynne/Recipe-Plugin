@@ -1,11 +1,8 @@
-<form>
+<div id="recipe-status"></div>
+<form id="recipe-form">
     <div class="form-group">
         <label>Title</label>
         <input type="text" class="form-control" id="r_inputTitle">
-    </div>
-    <div class="form-group">
-        <label>Content</label>
-        <textarea class="form-control" id="recipecontenteditor"></textarea>
     </div>
     CONTENT_EDITOR
     <div class="form-group">

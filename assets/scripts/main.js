@@ -16,6 +16,9 @@ jQuery(function($){
         });
     });
 
+
+
+    //submiting the form from website with new recipe
     $("#recipe-form").on( "submit", function(e){
         e.preventDefault();
 
@@ -44,6 +47,9 @@ jQuery(function($){
             }
         });
     });
+
+
+    //user registration and login ajax code
 
     $("#register-form").on( 'submit', function(e){
         e.preventDefault();
@@ -77,6 +83,8 @@ jQuery(function($){
             }
         });
     });
+
+
 
     $('#login-form').on( 'submit', function(e){
         e.preventDefault();

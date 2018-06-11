@@ -32,6 +32,10 @@ include(dirname(RECIPE_PLUGIN_URL).'/includes/widgets.php');
 include ('includes/widgets/daily-recipe.php');
 include('includes/cron.php');
 include('includes/shortcodes/creator.php');
+include('process/submit-user-recipe.php');
+include('includes/shortcodes/recipe-auth.php');
+include('process/create-account.php');
+include('process/login.php');
 
 
 
@@ -78,10 +82,21 @@ add_action('widgets_init','r_widget_init');
 //param name of the hook, name of the function
 add_action('r_daily_recipe_hook','r_generate_daily_recipe');
 
+//ajax creating submiting the recipe through the website
+add_action('wp_ajax_r_submit_user_recipe','r_submit_user_recipe');
+add_action('wp_ajax_nopriv_r_submit_user_recipe','r_submit_user_recipe');
+
+//authentication of user
+add_action('wp_ajax_nopriv_recipe_create_account','recipe_create_account');
+
+//user login
+add_action('wp_ajax_nopriv_recipe_user_login','recipe_user_login');
+
 //SHORTCODES
 //shortcode for
 //received the name of the shortcode and the function to call when its used
 add_shortcode( 'recipe_creator', 'r_recipe_creator_shortcode' );
 
-
+//recipe authentication code shortcode
+add_shortcode('recipe_auth_form','r_recipe_auth_form_shortcode');
 
