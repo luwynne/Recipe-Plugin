@@ -11,9 +11,8 @@ function r_filter_recipe_content($content){
     //replacing the placeholder with correct data
 
     global $post, $wpdb;
-    $recipe_tpl_res             =   wp_remote_get(
-        plugins_url( 'process/recipe-template.php', RECIPE_PLUGIN_URL )
-    );
+    //function to allow het method through the wp get request api
+    $recipe_tpl_res             =   wp_remote_get(plugins_url( 'process/recipe-template.php', RECIPE_PLUGIN_URL ));
     $recipe_html                =   wp_remote_retrieve_body( $recipe_tpl_res );
     $recipe_data                =   get_post_meta( $post->ID, 'recipe_data', true );
     $recipe_html                =   str_replace( 'INGREDIENTS_PH', $recipe_data['ingredients'], $recipe_html );

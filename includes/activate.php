@@ -11,6 +11,14 @@ function r_activate_plugin(){
         wp_die(__('You must update your WordPress version to use this plugin','recipe'));
     }
 
+
+    //using rewrite rules api
+    //registering the custom post type
+    recipe_init();
+
+    //this function updates the rewrite rules
+    flush_rewrite_rules();
+
     //creating new db table when activating the plugin
     global $wpdb;
 

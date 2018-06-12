@@ -36,6 +36,7 @@ include('process/submit-user-recipe.php');
 include('includes/shortcodes/recipe-auth.php');
 include('process/create-account.php');
 include('process/login.php');
+include('includes/admin/dashboard-widgets.php');
 
 
 
@@ -91,6 +92,9 @@ add_action('wp_ajax_nopriv_recipe_create_account','recipe_create_account');
 
 //user login
 add_action('wp_ajax_nopriv_recipe_user_login','recipe_user_login');
+
+//creates dashboard widget
+add_action('wp_dashboard_setup','r_add_dashboard_widgets');
 
 //SHORTCODES
 //shortcode for
