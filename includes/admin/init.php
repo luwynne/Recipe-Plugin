@@ -26,5 +26,8 @@ function recipe_admin_init(){
     //output for a certain post type
     add_action( 'manage_recipe_posts_custom_column', 'r_manage_recipe_columns', 10, 2 ); //priority and srguments
 
+    //options api
+    add_action('admin_post_r_save_options','r_save_options');
+
 
 }

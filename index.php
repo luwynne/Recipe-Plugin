@@ -37,8 +37,9 @@ include('includes/shortcodes/recipe-auth.php');
 include('process/create-account.php');
 include('process/login.php');
 include('includes/admin/dashboard-widgets.php');
-
-
+include('includes/admin/menus.php');
+include('includes/admin/options-page.php');
+include('process/save-options.php');
 
 //HOOKS
 
@@ -95,6 +96,11 @@ add_action('wp_ajax_nopriv_recipe_user_login','recipe_user_login');
 
 //creates dashboard widget
 add_action('wp_dashboard_setup','r_add_dashboard_widgets');
+
+//adding an admin menu
+add_action( 'admin_menu', 'r_admin_menus' );
+
+
 
 //SHORTCODES
 //shortcode for

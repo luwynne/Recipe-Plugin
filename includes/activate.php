@@ -42,4 +42,24 @@ function r_activate_plugin(){
     );
 
 
+     //first function of the options api
+    //this retrieves the value of an option
+    $recipe_opts = get_option('r_opts');
+
+    //if option doesnt exist, then wp will retun false
+    if(!$recipe_opts){
+
+        $opts = [
+            'rating_login_require'=>1,
+            'recipe_submission_login_required'=>1
+        ];
+
+
+        //inserts into the db
+        //received the name of the option the value
+        add_option('r_opts',$opts);
+
+    }
+
+
 }
