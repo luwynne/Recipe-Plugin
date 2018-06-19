@@ -12,6 +12,7 @@ function recipe_admin_init(){
     include( 'recipe-options.php' );
     include('enqueue.php');
     include('columns.php');
+    include('settings-api.php');
 
     //call function add meta boxes followed by the name of the post type
     add_action( 'add_meta_boxes_recipe', 'r_create_metaboxes' );
@@ -28,6 +29,9 @@ function recipe_admin_init(){
 
     //options api
     add_action('admin_post_r_save_options','r_save_options');
+
+    //admin page using the settings api
+    r_settings_api();
 
 
 }

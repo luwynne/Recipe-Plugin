@@ -43,15 +43,15 @@ function r_plugin_opts_page(){
 
         <hr>
 
-        <!-- <form method="POST" action="options.php">
-            <?php
+         <form method="POST" action="options.php">
+        <?php
 
-        settings_fields( 'r_opts_groups' );
-        do_settings_sections( 'r_opts_sections' );
-        submit_button();
+        settings_fields( 'r_opts_groups' ); //hidden security fields and options
+        do_settings_sections( 'r_opts_sections' ); //outputs the input fields
+        submit_button(); //
 
         ?>
-        </form> -->
+        </form>
     </div>
     <?php
 }
