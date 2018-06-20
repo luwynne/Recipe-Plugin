@@ -18,6 +18,37 @@ jQuery(function($){
 
 
 
+
+
+    //loading the featured image window
+    var featured_frame = wp.media({ //grabbing imformation from the media upload
+        title:'Select or upload media',
+        button:{
+            text:'Use this media'
+        },
+        multiple:false
+    });
+
+    //listen to click event
+    $("#recipe-img-upload-btn").on('click',function (e) {
+       e.preventDefault();
+       featured_frame.open();
+    });
+
+    //selecting the event that willl trigger when user select an image
+    featured_frame.on('select',function(){
+        //returning to the variable the current selected media in the uploader as a string and converting into an object
+        var attachment = featured_frame.state().get('selection').first().toJSON();
+        $("recipe-img-preview").attr('src',attachment.url);
+        $("r_inputImgID").val(attachment.id);
+    });
+
+
+
+
+
+
+
     //submiting the form from website with new recipe
     $("#recipe-form").on( "submit", function(e){
         e.preventDefault();
@@ -33,7 +64,8 @@ jQuery(function($){
             time:                   $("#r_inputTime").val(),
             utensils:               $("#r_inputUtensils").val(),
             level:                  $("#r_inputLevel").val(),
-            meal_type:              $("#r_inputMealType").val()
+            meal_type:              $("#r_inputMealType").val(),
+            attachment_id:          $("#r_inputImgID").val()
         };
 
         $.post( recipe_obj.ajax_url, form ).always(function(data){
@@ -47,6 +79,9 @@ jQuery(function($){
             }
         });
     });
+
+
+
 
 
     //user registration and login ajax code
@@ -83,6 +118,9 @@ jQuery(function($){
             }
         });
     });
+
+
+
 
 
 

@@ -62,4 +62,18 @@ function r_activate_plugin(){
     }
 
 
+    //user capabilities
+    global $wp_roles;
+
+    //adding a role
+    add_role(
+        'recipe_author',
+        __('Recipe Author','recipe'),
+        array(
+            'read'=>true,
+            'edit_posts'=>true,
+            'upload_files'=>true
+        )
+    );
+
 }

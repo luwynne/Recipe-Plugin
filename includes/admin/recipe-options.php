@@ -38,5 +38,12 @@ function r_recipe_options_mb( $post ){
         <label>Meal Type</label>
         <input type="text" class="form-control" name="r_inputMealType" value="<?php echo $recipe_data['meal_type']; ?>">
     </div>
+    <div class="form-group">
+        <label>Featured image<a href="" id="recipe-img-upload-btn"> Upload</a> </label>
+        <br>
+        <img id="recipe-img-preview">
+        <input type="hidden" id="r_inputImgID">
+
+    </div>
     <?php
 }

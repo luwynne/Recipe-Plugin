@@ -7,6 +7,17 @@ function r_rate_recipe(){
     global $wpdb;
 
     $output = array('status'=>1); //response
+
+    //checking if the user is logged in when required
+    $recipe_opts = get_option('r_opts');
+
+    if(!is_user_logged_in() && $recipe_opts['rating_login_required'] == 2){
+
+        wp_send_json($output);
+
+    }
+
+
     $post_id = absint($_POST['rid']); //returns the variable as an absolute integer
     $rating = round($_POST['rating'],1); //this will round the rating variable, making the number more precise
     $user_IP = $_SERVER['REMOTE_ADDR']; //getting the user ip, in this case, the server ip
