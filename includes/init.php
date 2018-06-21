@@ -48,4 +48,14 @@ function recipe_init(){
 
     register_post_type( 'recipe', $args ); // receives post type namd and the array with arguments
 
+    //REGISTERING TAXONOMY
+    register_taxonomy(
+        'origin',
+        'recipe',
+        array(
+            'label'=>__('Origin','recipe'),
+            'rewrite'=>array('slug'=>'origin')
+        )
+    );
+
 }

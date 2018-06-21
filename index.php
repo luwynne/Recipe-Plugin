@@ -40,6 +40,8 @@ include('includes/admin/dashboard-widgets.php');
 include('includes/admin/menus.php');
 include('includes/admin/options-page.php');
 include('process/save-options.php');
+include('includes/admin/origin-fields.php');
+include('process/save-origin.php');
 
 //HOOKS
 
@@ -100,6 +102,11 @@ add_action('wp_dashboard_setup','r_add_dashboard_widgets');
 //adding an admin menu
 add_action( 'admin_menu', 'r_admin_menus' );
 
+//registering a form field to the taxonomy admin page
+add_action('origin_add_form_fields','r_origin_add_form_fields');
+add_action('created_origin','r_save_origin_meta');
+add_action('edited_origin','r_save_origin_meta');
+add_action('origin_edit_form_fields','r_origin_edit_form_fields');
 
 
 //SHORTCODES
