@@ -30,6 +30,10 @@
         <input type="text" class="form-control" id="r_inputMealType">
     </div>
     <div class="form-group">
+        <label>Video URL</label>
+        <input type="text" class="form-control" id="r_inputVideoURL">
+    </div>
+    <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit Recipe</button>
     </div>
 </form>

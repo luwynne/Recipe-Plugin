@@ -42,6 +42,8 @@ include('includes/admin/options-page.php');
 include('process/save-options.php');
 include('includes/admin/origin-fields.php');
 include('process/save-origin.php');
+include('includes/textdomain.php');
+
 
 //HOOKS
 
@@ -108,12 +110,14 @@ add_action('created_origin','r_save_origin_meta');
 add_action('edited_origin','r_save_origin_meta');
 add_action('origin_edit_form_fields','r_origin_edit_form_fields');
 
+//for the translation plugin
+add_action('plugins_loaded','r_load_textdomain');
+
+
+
+
 
 //SHORTCODES
 //shortcode for
 //received the name of the shortcode and the function to call when its used
 add_shortcode( 'recipe_creator', 'r_recipe_creator_shortcode' );
-
-//recipe authentication code shortcode
-add_shortcode('recipe_auth_form','r_recipe_auth_form_shortcode');
-
